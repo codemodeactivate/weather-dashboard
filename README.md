@@ -12,7 +12,7 @@ Case Western Coding Bootcamp Module 06 Challenge
 
 - [X] todo
 ## Notes
-
+We got a preview of our first (group) project that we'll start soon. I noted one of the requirements was to use a CSS framework other than bootstrap. I'm going to take this opportunity to watch a few tutorials on [some that look interesting](https://github.com/troxler/awesome-css-frameworks).
 
 ## Credits
 
