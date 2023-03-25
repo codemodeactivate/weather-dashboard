@@ -513,4 +513,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-@tailwind compontents;
+.text-yellow-900 {
+  --tw-text-opacity: 1;
+  color: rgb(113 63 18 / var(--tw-text-opacity));
+}

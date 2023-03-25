@@ -41,7 +41,7 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Mock-Up
-![Mock-up](./assets/images/reference-demo.png)
+![Mock-up](./public/assets/img/reference-demo.png)
 
 ## Requirements
 ### Technical Acceptance Criteria: 40%
