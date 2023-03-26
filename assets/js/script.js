@@ -16,7 +16,7 @@ function getWeather(city) {
         console.log('function');
         console.log(weatherData);
         todayWeatherPrint(weatherData);
-        fiveDayForecastPrint(weatherData);
+        //fiveDayForecastPrint(weatherData);
 
     })
 }
@@ -50,6 +50,7 @@ return newDate;
 }
 
 function todayWeatherPrint(weatherData) {
+
     const todayIcon = weatherData.list[0].weather[0].icon;
     console.log(todayIcon);
     const weather = document.createElement('div');
@@ -66,12 +67,14 @@ function todayWeatherPrint(weatherData) {
 
 }
 
-function fiveDayForecastPrint(weatherData) {
+/*function fiveDayForecastPrint(weatherData) {
     for (let i=1; i<6; i++) {
-        const day[i] = weatherData.list[i];
+        const day = weatherData.list[i];
+        const dateData = day.dt_txt;
+
         const futureDayIcon[i] = day[i].weather[i].icon;
         console.log(futureDayIcon[i].icon);
     }
 
 
-}
+}*/
