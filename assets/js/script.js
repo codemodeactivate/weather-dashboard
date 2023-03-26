@@ -16,7 +16,7 @@ function getWeather(city) {
         console.log('function');
         console.log(weatherData);
         todayWeatherPrint(weatherData);
-        //fiveDayForecastPrint(weatherData);
+        fiveDayForecastPrint(weatherData);
 
     })
 }
@@ -66,6 +66,12 @@ function todayWeatherPrint(weatherData) {
 
 }
 
-//function fiveDayForecastPrint(weatherData) {
+function fiveDayForecastPrint(weatherData) {
+    for (let i=1; i<6; i++) {
+        const day[i] = weatherData.list[i];
+        const futureDayIcon[i] = day[i].weather[i].icon;
+        console.log(futureDayIcon[i].icon);
+    }
 
-//}
+
+}
