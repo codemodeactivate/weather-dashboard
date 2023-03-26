@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build-css": "tailwindcss build src/styles.css -o public/assets/css/styles.css",
-    "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
+    "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
+    "gh-deploy-init": "git push origin && git main push --prefix dist origin gh-pages"
   },
   "repository": {
     "type": "git",
