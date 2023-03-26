@@ -1,7 +1,7 @@
-# Code Quiz
+# Weather App
 Case Western Coding Bootcamp Module 06 Challenge
 
-[Live Demo]()
+[Live Demo](https://codemodeactivate.github.io/weather-dashboard/)
 
 ![Screenshot]()
 
