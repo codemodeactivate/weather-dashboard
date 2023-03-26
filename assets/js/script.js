@@ -70,7 +70,7 @@ function todayWeatherPrint(weatherData) {
 
 function fiveDayForecastPrint(weatherData) {
     const futureDayIcon = [];
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 8; weatherData.list.length; i+=8) {
       const day = weatherData.list[i];
       const dayOfWeek = convertDate(weatherData, i);
       const futureIconURL = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
