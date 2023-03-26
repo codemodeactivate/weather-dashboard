@@ -48,14 +48,20 @@ const options = {timeZone: timeZone, month: 'numeric', day: 'numeric', year: 'nu
 const newDate = inputDate.toLocaleDateString('en-US', options);
 return newDate;
 }
+
 function todayWeatherPrint(weatherData) {
+    const todayIcon = weatherData.list[0].weather[0].icon;
+    console.log(todayIcon);
     const weather = document.createElement('div');
     //weather.classList.add('weather');
     const currentDate = convertDate(weatherData);
+    const iconURL = `https://openweathermap.org/img/wn/${todayIcon}@2x.png`;
     weather.innerHTML = `
-        <h2>${weatherData.city.name}</h2>
-        <p>(${currentDate})</p>
+        <h2>${weatherData.city.name} (${currentDate})</h2> <img src="${iconURL}" />
+        <p></p>
     `;
+    //clean this area when new search is performed
+    todayWeather.innerHTML = "";
     todayWeather.appendChild(weather);
 
 }
