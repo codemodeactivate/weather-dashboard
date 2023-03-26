@@ -1,6 +1,8 @@
 const searchForm = document.getElementById('search-form');
+const todayWeather = document.getElementById('weather-today');
 const apiKey = 'ef20bc3f8fc3da07cc17e6cea84240e1';
 var units = 'imperial';
+
 //optional units = imperial, metric, standard
 //pass city to promise to get data - weatherData
 function getWeather(city) {
@@ -13,6 +15,9 @@ function getWeather(city) {
         console.log(weatherData);
         console.log('function');
         console.log(weatherData);
+        todayWeatherPrint(weatherData);
+        //fiveDayForecastPrint(weatherData);
+
     })
 }
 
@@ -32,3 +37,29 @@ searchForm.addEventListener('submit', function(searchCity) {
 
 //let's start out with 12PM for each day. json returns an array with length 40
 //each day in 3 hour increments, so 5 days
+
+
+//convert immediate day at list[0]
+function convertDate(weatherData){
+const dateData = weatherData.list[0].dt_txt;
+const inputDate = new Date(dateData);
+const timeZone = weatherData.city.timeZone;
+const options = {timeZone: timeZone, month: 'numeric', day: 'numeric', year: 'numeric'};
+const newDate = inputDate.toLocaleDateString('en-US', options);
+return newDate;
+}
+function todayWeatherPrint(weatherData) {
+    const weather = document.createElement('div');
+    //weather.classList.add('weather');
+    const currentDate = convertDate(weatherData);
+    weather.innerHTML = `
+        <h2>${weatherData.city.name}</h2>
+        <p>(${currentDate})</p>
+    `;
+    todayWeather.appendChild(weather);
+
+}
+
+//function fiveDayForecastPrint(weatherData) {
+
+//}
