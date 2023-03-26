@@ -1,5 +1,6 @@
 const searchForm = document.getElementById('search-form');
 const todayWeather = document.getElementById('weather-today');
+const fiveDayForecast = document.getElementById('five-day-forecast');
 const apiKey = 'ef20bc3f8fc3da07cc17e6cea84240e1';
 var units = 'imperial';
 
@@ -16,7 +17,7 @@ function getWeather(city) {
         console.log('function');
         console.log(weatherData);
         todayWeatherPrint(weatherData);
-        //fiveDayForecastPrint(weatherData);
+        fiveDayForecastPrint(weatherData);
 
     })
 }
@@ -40,8 +41,8 @@ searchForm.addEventListener('submit', function(searchCity) {
 
 
 //convert immediate day at list[0]
-function convertDate(weatherData){
-const dateData = weatherData.list[0].dt_txt;
+function convertDate(weatherData, i){
+const dateData = weatherData.list[i].dt_txt;
 const inputDate = new Date(dateData);
 const timeZone = weatherData.city.timeZone;
 const options = {timeZone: timeZone, month: 'numeric', day: 'numeric', year: 'numeric'};
@@ -55,7 +56,7 @@ function todayWeatherPrint(weatherData) {
     console.log(todayIcon);
     const weather = document.createElement('div');
     //weather.classList.add('weather');
-    const currentDate = convertDate(weatherData);
+    const currentDate = convertDate(weatherData, 0);
     const iconURL = `https://openweathermap.org/img/wn/${todayIcon}@2x.png`;
     weather.innerHTML = `
         <h2>${weatherData.city.name} (${currentDate})</h2> <img src="${iconURL}" />
@@ -67,14 +68,21 @@ function todayWeatherPrint(weatherData) {
 
 }
 
-/*function fiveDayForecastPrint(weatherData) {
-    for (let i=1; i<6; i++) {
-        const day = weatherData.list[i];
-        const dateData = day.dt_txt;
-
-        const futureDayIcon[i] = day[i].weather[i].icon;
-        console.log(futureDayIcon[i].icon);
+function fiveDayForecastPrint(weatherData) {
+    const futureDayIcon = [];
+    for (let i = 1; i <= 5; i++) {
+      const day = weatherData.list[i];
+      const dayOfWeek = convertDate(weatherData, i);
+      const futureIconURL = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
+      futureDayIcon.push({
+        day: dayOfWeek,
+        iconURL: futureIconURL,
+      });
+      fiveDayForecast.innerHTML += `
+        <div class="future_day">
+          <p>${dayOfWeek}</p>
+          <img src="${futureIconURL}" />
+        </div>
+      `;
     }
-
-
-}*/
+  }
