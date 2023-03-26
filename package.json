@@ -1,0 +1,27 @@
+{
+  "name": "module06-challenge",
+  "version": "1.0.0",
+  "description": "Case Western Coding Bootcamp Module 06 Challenge",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss build src/styles.css -o public/assets/css/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codemodeactivate/weather-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codemodeactivate/weather-dashboard/issues"
+  },
+  "homepage": "https://codemodeactivate.github.io/weather-dashboard/",
+  "dependencies": {
+    "flowbite": "^1.6.4",
+    "tailwindcss": "^3.2.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
