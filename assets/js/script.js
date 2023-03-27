@@ -71,19 +71,34 @@ function todayWeatherPrint(weatherData) {
 
 function fiveDayForecastPrint(weatherData) {
     const futureDayIcon = [];
-    for (let i = 0; i <= 40; i+=7) {
+    const today = new Date().getDate();
+
+
+
+    /*for (let i = 0; i <= 40; i+=7) {
       const day = weatherData.list[i];
-      const dayOfWeek = convertDate(weatherData, i);
-      const temp = day.main.temp;
+
+
       const timeStamp = day.dt * 1000;
       const date = new Date(timeStamp);
-      const formattedTime = date.toLocaleTimeString();
-      console.log(formattedTime + ": " + temp);
-      const futureIconURL = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
-      futureDayIcon.push({
-        day: dayOfWeek,
-        iconURL: futureIconURL,
-      });
+      const hours = date.getHours();
+      //const formattedTime = date.toLocaleTimeString();
+      const dayOfMonth = date.getDate();
+
+      if (dayOfMonth > today && futureDayIcon.length < 5) {
+        const dayOfWeek = convertDate(weatherData, i);
+        const temp = day.main.temp
+        const futureIconURL = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
+
+        console.log(`${dayOfWeek} ${hours}:00: ${temp}`);
+
+
+        futureDayIcon.push({
+          day: dayOfWeek,
+          iconURL: futureIconURL,
+          temp: temp,
+        });
+      }*/
       /*fiveDayForecast.innerHTML += `
         <div class="future_day">
           <p>${dayOfWeek}</p>
