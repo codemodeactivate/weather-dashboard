@@ -85,6 +85,8 @@ function todayWeatherPrint(weatherData) {
 function fiveDayForecastPrint(weatherData) {
     //const futureDayIcon = [];
     //const today = new Date().getDate();
+    fiveDayForecast.innerHTML = ""
+    //const futureWeather = document.createElement('div');
     for (i = 0; i < 5; i++) {
         const futureData = weatherData.list[((i+1) * 8) - 1];
         const dayOfWeek = new Date((futureData.dt)*1000).toLocaleDateString(); //get last record for each day
@@ -105,6 +107,8 @@ function fiveDayForecastPrint(weatherData) {
 
         </div>
       `;
+      ;
+
 
 
     }
