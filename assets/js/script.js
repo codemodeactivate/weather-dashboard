@@ -96,7 +96,7 @@ function fiveDayForecastPrint(weatherData) {
         console.log(dayOfWeek + ": " + futureTemp);
 
         fiveDayForecast.innerHTML += `
-        <div class="future_day place-self-center">
+        <div class="future_day bg-slate-700">
           <p>${dayOfWeek}</p>
           <img src="${futureIconURL}" />
           <p>Temp: ${futureTemp}°F</p>
