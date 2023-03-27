@@ -58,10 +58,15 @@ function todayWeatherPrint(weatherData) {
     const weather = document.createElement('div');
     //weather.classList.add('weather');
     const currentDate = convertDate(weatherData, 0);
+    const wind = weatherData.list[0].wind.speed;
+    const temp = weatherData.list[0].main.temp;
+    const humidity = weatherData.list[0].main.humidity;
     const iconURL = `https://openweathermap.org/img/wn/${todayIcon}@2x.png`;
     weather.innerHTML = `
         <h2>${weatherData.city.name} (${currentDate})</h2> <img src="${iconURL}" />
-        <p></p>
+        <p>Wind: ${wind}</p>
+        <p>Temp: ${temp}</p>
+        <p>Humidity: ${humidity}</p>
     `;
     //clean this area when new search is performed
     todayWeather.innerHTML = "";
@@ -73,16 +78,19 @@ function fiveDayForecastPrint(weatherData) {
     //const futureDayIcon = [];
     //const today = new Date().getDate();
     for (i = 0; i < 5; i++) {
-        const dayOfWeek = new Date((weatherData.list[((i+1)*8)-1].dt)*1000).toLocaleDateString(); //get last record for each day
-        const futureIcon = weatherData.list[((i+1) * 8) - 1].weather[0].icon;
+        const futureData = weatherData.list[((i+1) * 8) - 1];
+        const dayOfWeek = new Date((futureData.dt)*1000).toLocaleDateString(); //get last record for each day
+        const futureIcon = futureData.weather[0].icon;
         const futureIconURL = `https://openweathermap.org/img/wn/${futureIcon}@2x.png`;
-        const futureTemp = weatherData.list[((i+1)*8) - 1].main.temp; //last temperature of the future day
+        const futureTemp = futureData.main.temp; //last temperature of the future day
+        const futureWind = futureData.wind.speed;
         console.log(dayOfWeek + ": " + futureTemp);
 
         fiveDayForecast.innerHTML += `
         <div class="future_day">
           <p>${dayOfWeek}</p>
           <img src="${futureIconURL}" />
+          <p>Wind: ${futureWind}</p>
 
         </div>
       `;
