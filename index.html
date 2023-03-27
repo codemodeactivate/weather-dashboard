@@ -10,10 +10,15 @@
     <title>Weather Application</title>
 </head>
 <body class="text-gray-600 font-body">
-<div id="container">
-    <header><h1>Weather Dashboard</h1></header>
-    <aside>
-        <div id="search-container">
+<div id="container" class="min-h-screen">
+    <header class="flex justify-center">
+        <div>
+            <h1>Weather Dashboard</h1>
+        </div>
+    </header>
+    <div class="grid grid-cols-12 md:grid-cols-3 gap-3"> <!-- Start of area under header -->
+    <div class="col-start-1 col-span-3 md:col-start-2 md:col-span-1">
+        <div id="search-container" class="flex flex-grow flex-col">
             <h2>Search for a city:</h2>
             <form id="search-form" class="flex items-center">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -33,16 +38,18 @@
         <div id="past-searches">
 
         </div>
-    </aside>
-    <main>
-        <div id="weather-today" class="weather-today">
-
+    </div>
+    <main class="col-span-2 md:col-start-3 md:col-span-10 mx-4 md:ml-8 md:mr-8">
+        <div id="weather-today" class="w-full col-start-2 col-span-9 border-2">
+            Results
         </div>
-        <div id="five-day-forecast">
+        <div id="five-day-forecast" class="flex">
             <h3>5-Day Forecast:</h3>
+            
         </div>
         </div>
     </main>
+    </div>
 
 </div>
 
