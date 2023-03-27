@@ -42,6 +42,7 @@ searchForm.addEventListener('submit', function(searchCity) {
 
 //convert immediate day at list[0]
 function convertDate(weatherData, i){
+if (weatherData.list.length <= i) return null;
 const dateData = weatherData.list[i].dt_txt;
 const inputDate = new Date(dateData);
 const timeZone = weatherData.city.timeZone;
@@ -70,19 +71,25 @@ function todayWeatherPrint(weatherData) {
 
 function fiveDayForecastPrint(weatherData) {
     const futureDayIcon = [];
-    for (let i = 8; weatherData.list.length; i+=8) {
+    for (let i = 0; i <= 40; i+=7) {
       const day = weatherData.list[i];
       const dayOfWeek = convertDate(weatherData, i);
+      const temp = day.main.temp;
+      const timeStamp = day.dt * 1000;
+      const date = new Date(timeStamp);
+      const formattedTime = date.toLocaleTimeString();
+      console.log(formattedTime + ": " + temp);
       const futureIconURL = `https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
       futureDayIcon.push({
         day: dayOfWeek,
         iconURL: futureIconURL,
       });
-      fiveDayForecast.innerHTML += `
+      /*fiveDayForecast.innerHTML += `
         <div class="future_day">
           <p>${dayOfWeek}</p>
           <img src="${futureIconURL}" />
+
         </div>
-      `;
+      `;*/
     }
   }
