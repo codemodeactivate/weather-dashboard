@@ -77,6 +77,7 @@ function todayWeatherPrint(weatherData) {
     `;
     //clean this area when new search is performed
     todayWeather.innerHTML = "";
+    todayWeather.classList.add('border-2');
     todayWeather.appendChild(weather);
 
 }
@@ -88,19 +89,19 @@ function fiveDayForecastPrint(weatherData) {
         const futureData = weatherData.list[((i+1) * 8) - 1];
         const dayOfWeek = new Date((futureData.dt)*1000).toLocaleDateString(); //get last record for each day
         const futureIcon = futureData.weather[0].icon;
-        const futureIconURL = `https://openweathermap.org/img/wn/${futureIcon}@2x.png`;
+        const futureIconURL = `https://openweathermap.org/img/wn/${futureIcon}.png`;
         const futureTemp = futureData.main.temp; //last temperature of the future day
         const futureWind = futureData.wind.speed;
         const futureHumidity = futureData.main.humidity;
         console.log(dayOfWeek + ": " + futureTemp);
 
         fiveDayForecast.innerHTML += `
-        <div class="future_day">
+        <div class="future_day place-self-center">
           <p>${dayOfWeek}</p>
-          <img src="${futureIconURL}" /
-          <p>Temperature: ${futureTemp}</p>
-          <p>Wind: ${futureWind}</p>
-          <p>Humidity: ${futureHumidity}</p>
+          <img src="${futureIconURL}" />
+          <p>Temp: ${futureTemp}°F</p>
+          <p>Wind: ${futureWind} MPH</p>
+          <p>Humidity: ${futureHumidity} %</p>
 
         </div>
       `;
