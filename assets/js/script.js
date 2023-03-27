@@ -8,9 +8,9 @@ window.addEventListener('load', function(){ //on load see if there's anything in
             addPast(city);
         });
     }
-    //if (cachedCity.length === 0) {
-    //    pastSearches.hidden = true;
-    //}
+    if (cachedCity.length === 0) {
+        pastSearches.hidden = true;
+    }
 
 });
 
@@ -114,15 +114,23 @@ function addPast(location) {
     const pastCityEle = document.createElement('li');
     const pastCityButton = document.createElement('button');
     pastCityButton.textContent = pastCity;
+    //event listener for past city buttons
+    pastCityButton.addEventListener('click', function() {
+        const cachedCityJSON = localStorage.getItem(pastCity);
+        if (cachedCityJSON) {
+            const weatherData = JSON.parse(cachedCityJSON);
+            todayWeatherPrint(weatherData);
+            fiveDayForecastPrint(weatherData);
+        } else {
+            getWeather(pastCity);
+        }
+    });
 
     pastCityEle.appendChild(pastCityButton);
 
     if (pastCityButton) {
-
         pastCityButton.classList.add('btn-past');
     }
-
-
     pastCityList.appendChild(pastCityEle);
 }
 
@@ -153,15 +161,8 @@ function fiveDayForecastPrint(weatherData) {
         </div>
       `;
       ;
-
-
-
     }
-
-
-
-
-    }
+}
 
 
 
