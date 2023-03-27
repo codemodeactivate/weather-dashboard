@@ -70,26 +70,29 @@ function todayWeatherPrint(weatherData) {
 }
 
 function fiveDayForecastPrint(weatherData) {
-    const futureDayIcon = [];
-    const today = new Date().getDate();
+    //const futureDayIcon = [];
+    //const today = new Date().getDate();
     for (i = 0; i < 5; i++) {
-        const date = new Date((weatherData.list[((i+1)*8)-1].dt)*1000).toLocaleDateString(); //get last record for each day
+        const dayOfWeek = new Date((weatherData.list[((i+1)*8)-1].dt)*1000).toLocaleDateString(); //get last record for each day
         const futureIcon = weatherData.list[((i+1) * 8) - 1].weather[0].icon;
-        const iconURL = `https://openweathermap.org/img/wn/${futureIcon}@dx.png`;
+        const futureIconURL = `https://openweathermap.org/img/wn/${futureIcon}@2x.png`;
         const futureTemp = weatherData.list[((i+1)*8) - 1].main.temp; //last temperature of the future day
-        console.log(date + ": " + futureTemp);
+        console.log(dayOfWeek + ": " + futureTemp);
 
-    }
-
-
-
-      /*fiveDayForecast.innerHTML += `
+        fiveDayForecast.innerHTML += `
         <div class="future_day">
           <p>${dayOfWeek}</p>
           <img src="${futureIconURL}" />
 
         </div>
-      `;*/
+      `;
+
+
+    }
+
+
+
+
     }
 
 
