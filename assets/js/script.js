@@ -1,5 +1,15 @@
 //load cache
 
+window.addEventListener('load', function(){ //on load see if there's anything in localstorage for previous searches
+    const cachedCityJSON = localStorage.getItem('pastCity');
+    if (cachedCityJSON) {
+        cachedCity  = JSON.parse(cachedCityJSON);
+        cachedCity.forEach(function(city){
+            addPast(city);
+        });
+    }
+});
+
 const searchForm = document.getElementById('search-form');
 const todayWeather = document.getElementById('weather-today');
 const fiveDayForecast = document.getElementById('five-day-forecast');
@@ -96,9 +106,19 @@ function todayWeatherPrint(weatherData) {
 
 function addPast(location) {
     const pastCity = location.toUpperCase();
-    pastSearches.append(pastCity);
-    console.log(cachedCity);
+    const pastCityList = document.getElementById('past-city-list');
+    const pastCityEle = document.createElement('li');
+    const pastCityButton = document.createElement('button');
+    pastCityButton.textContent = pastCity;
 
+    pastCityEle.appendChild(pastCityButton);
+
+    if (pastCityButton) {
+        pastCityButton.classList.add('py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'.replace(/ /g, '-'));
+    }
+
+
+    pastCityList.appendChild(pastCityEle);
 }
 
 
