@@ -72,7 +72,11 @@ function todayWeatherPrint(weatherData) {
 function fiveDayForecastPrint(weatherData) {
     const futureDayIcon = [];
     const today = new Date().getDate();
+    for (i = 0; i < 5; i++) {
+        const date = new Date((weatherData.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
+        console.log(date);
 
+    }
 
 
     /*for (let i = 0; i <= 40; i+=7) {
@@ -107,4 +111,3 @@ function fiveDayForecastPrint(weatherData) {
         </div>
       `;*/
     }
-  }
