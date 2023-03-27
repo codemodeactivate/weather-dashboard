@@ -1,8 +1,12 @@
+//load cache
+
 const searchForm = document.getElementById('search-form');
 const todayWeather = document.getElementById('weather-today');
 const fiveDayForecast = document.getElementById('five-day-forecast');
 const apiKey = 'ef20bc3f8fc3da07cc17e6cea84240e1';
 var units = 'imperial';
+var cachedCity = [];
+const pastSearches = document.getElementById('past-searches');
 
 //optional units = imperial, metric, standard
 //pass city to promise to get data - weatherData
@@ -60,13 +64,14 @@ function todayWeatherPrint(weatherData) {
     const currentDate = convertDate(weatherData, 0);
     const wind = weatherData.list[0].wind.speed;
     const temp = weatherData.list[0].main.temp;
+    const location = weatherData.city.name;
     const humidity = weatherData.list[0].main.humidity;
     const iconURL = `https://openweathermap.org/img/wn/${todayIcon}.png`;
     const iconAltText = weatherData.list[0].weather[0].description;
     weather.innerHTML = `
         <div class="flex p-5">
             <div class="flex">
-                <h2 class="text-xl">${weatherData.city.name} (${currentDate})</h2> <img src="${iconURL}" alt="${iconAltText} class="self-start" />
+                <h2 class="text-xl">${location} (${currentDate})</h2> <img src="${iconURL}" alt="${iconAltText} class="self-start" />
             </div>
         </div>
         <div class="flex flex-col p-4">
@@ -80,7 +85,22 @@ function todayWeatherPrint(weatherData) {
     todayWeather.classList.add('border-2');
     todayWeather.appendChild(weather);
 
+    //set data to localstorage
+    console.log(weatherData.cod);
+    if (weatherData.cod == 200) {
+        cachedCity.push(location.toUpperCase());
+        localStorage.setItem("pastCity", JSON.stringify(cachedCity));
+        addPast(location);
+    }
 }
+
+function addPast(location) {
+    const pastCity = location.toUpperCase();
+    pastSearches.append(pastCity);
+    console.log(cachedCity);
+
+}
+
 
 function fiveDayForecastPrint(weatherData) {
     //const futureDayIcon = [];
