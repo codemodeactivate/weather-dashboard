@@ -129,7 +129,7 @@ function addPast(location) {
     pastCityEle.appendChild(pastCityButton);
 
     if (pastCityButton) {
-        pastCityButton.classList.add('btn-past');
+        pastCityButton.classList = 'ml-2 w-full text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
     }
     pastCityList.appendChild(pastCityEle);
 }
@@ -151,8 +151,8 @@ function fiveDayForecastPrint(weatherData) {
         console.log(dayOfWeek + ": " + futureTemp);
 
         fiveDayForecast.innerHTML += `
-        <div class="future_day bg-slate-700">
-          <p>${dayOfWeek}</p>
+        <div class="future_day bg-gray-400 p-3">
+          <p class="text-center">${dayOfWeek}</p>
           <img src="${futureIconURL}" />
           <p>Temp: ${futureTemp}°F</p>
           <p>Wind: ${futureWind} MPH</p>
