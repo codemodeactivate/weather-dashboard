@@ -44,7 +44,7 @@ searchForm.addEventListener("submit", function (searchCity) {
     //else error signal
     if (city) {
         getWeather(city);
-        pastSearchChecker();
+        //pastSearchChecker(); v2.0 maybe
     } else {
         console.log("something unexpected so far?");
         //make 404 or anything other than 200 message!
@@ -171,7 +171,7 @@ function fiveDayForecastPrint(weatherData) {
 
 
         fiveDayForecast.innerHTML += `
-        <div class="future_day bg-purple-300 p-3 sm:mx-4 rounded">
+        <div class="future_day bg-purple-300 p-3 sm:mx-4 rounded my-2">
           <p class="text-center">${dayOfWeek}</p>
           <img src="${futureIconURL}" />
           <p>Temp: ${futureTemp}°F</p>

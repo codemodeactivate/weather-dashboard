@@ -18,9 +18,9 @@
     </header>
     <div id="main-area" class="grid md:grid-cols-12 gap-3 md:grid md:auto-rows-6 md:col-span-12">
          <!-- Start of area under search -->
-    <div id="left-side">
+    <div id="left-side" class="grid md:grid md:col-start-1 md:col-span-3">
     <div class="grid md:grid md:col-span-4 md:items-start">
-        <div id="search-container" class="flex flex-grow flex-col ml-2 mb-2 justify-center order-1 md:col-start-1 md:col-span-4 md:row-start-1">
+        <div id="search-container" class="flex flex-grow flex-col ml-2 mb-2 justify-center order-1 md:col-start-1 md:col-span-3 md:row-start-1">
             <h2 class="text-center text-lg">Search for a city:</h2>
             <form id="search-form" class="flex items-center">
                 <label for="simple-search" class="sr-only">Search</label>
@@ -37,7 +37,7 @@
             </form>
         </div>
         </div>
-        <div id="past-searches" class="order-4 md:grid md:col-start-1 md:col-span-4">
+        <div id="past-searches" class="hidden md:grid md:col-start-1 md:col-span-4">
             <ul id="past-city-list" class="md:items-start">
 
             </ul>
@@ -46,18 +46,18 @@
 
 
         </div>
-        <div id="right-side" class="md:grid md:col-start-5 md:col-span-7 md:w-full">
-            <div id="weather-today" class="grid md:grid md:w-full">
+        <div id="right-side" class="flex flex-col justify-center content-center w-full md:grid md:col-start-5 md:col-span-7 md:w-full">
+            <div id="weather-today" class="grid md:grid md:w-full justify-items-center">
 
             </div>
-            <div class="flex md:flex md:flex-row order-2 bg-red-200">
-            <div class="flex md:flex md:flex-col">
+            <div class="flex md:flex order-2 justify-center content-center w-full">
+            <div class="flex flex-col md:flex md:flex-col">
                     <div>
                         <h3>Five Day Forecast</h3>
                     </div>
 
 
-                    <div id="five-day-forecast" class="flex md:flex md:w-full justify-between">
+                    <div id="five-day-forecast" class="flex flex-col md:flex-row md:w-full justify-between md:my-2">
 
 
                     </div>
