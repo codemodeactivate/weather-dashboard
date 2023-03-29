@@ -3,20 +3,19 @@ Case Western Coding Bootcamp Module 06 Challenge
 
 [Live Demo](https://codemodeactivate.github.io/weather-dashboard/)
 
-![Screenshot]()
+![Screenshot](./assets/img/demo.gif)
 
 ## Description
+Check the 5 day weather forecast by searching for your city. I used this project as an opportunity to learn more about tailwind. My main takeaway was the importance of mobile-first if that's how the framework was designed. It took way too long to fix things going reverse. An idea for a later iteration will be to check if the previous searches match the current search and if so, we wouldn't add the search to the history, instead move the item to the top of the list.
 
-
-## To-Do
-
-- [X] todo
 ## Notes
 We got a preview of our first (group) project that we'll start soon. I noted one of the requirements was to use a CSS framework other than bootstrap. I'm going to take this opportunity to watch a few tutorials on [some that look interesting](https://github.com/troxler/awesome-css-frameworks).
 
+I noticed one unexpected behavior where if the user searches for something that results in an error and then searches again, only one day will show instead of five for the forecast.
+
 ## Credits
-
-
+[https://web.dev/fetch-api-error-handling/](https://web.dev/fetch-api-error-handling/)
+[https://www.tjvantoll.com/2015/09/13/fetch-and-errors/](https://www.tjvantoll.com/2015/09/13/fetch-and-errors/)
 
 ## User Story
 
@@ -42,38 +41,3 @@ THEN I am again presented with current and future conditions for that city
 
 ## Mock-Up
 ![Mock-up](./assets/img/reference-demo.png)
-
-## Requirements
-### Technical Acceptance Criteria: 40%
-Satisfies all of the above acceptance criteria plus the following:
-
-Uses the OpenWeather API to retrieve weather data
-
-Uses localStorage to store persistent data
-
-### Deployment: 32%
-Application deployed at live URL
-
-Application loads with no errors
-
-Application GitHub URL submitted
-
-GitHub repository that contains application code
-
-### Application Quality: 15%
-Application user experience is intuitive and easy to navigate
-
-Application user interface style is clean and polished
-
-Application resembles the mock-up functionality provided in the Challenge instructions
-
-### Repository Quality: 13%
-Repository has a unique name
-
-Repository follows best practices for file structure and naming conventions
-
-Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-Repository contains multiple descriptive commit messages
-
-Repository contains a quality README file with description, screenshot, and link to deployed application

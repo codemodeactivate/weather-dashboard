@@ -20,6 +20,7 @@ const apiKey = "ef20bc3f8fc3da07cc17e6cea84240e1";
 var units = "imperial";
 var cachedCity = [];
 const pastSearches = document.getElementById("past-searches");
+const fiveDay = document.getElementById("five-day-text");
 
 //optional units = imperial, metric, standard
 //pass city to promise to get data - weatherData
@@ -27,11 +28,22 @@ function getWeather(city) {
     const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
     fetch(requestUrl)
         .then(function (response) {
+            if (!response.ok) {
+                todayWeather.innerHTML = `<p class="text-5xl font-black text-red-600 uppercase">PLEASE TRY YOUR SEARCH AGAIN!</p>`;
+                fiveDay.classList.add('hidden');
+                fiveDayForecast.classList.add('hidden');
+                throw new Error(`HTTP ERROR WEEWOOWEEWOO! status ${response.status}`)
+
+            }
+
             return response.json();
         })
         .then(function (weatherData) {
             todayWeatherPrint(weatherData);
             fiveDayForecastPrint(weatherData);
+        })
+        .catch (function(error) {
+            console.error('Error fetching weather data:', error);
         });
 }
 
