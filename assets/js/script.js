@@ -1,3 +1,4 @@
+
 window.addEventListener("load", function () {
     //on load see if there's anything in localstorage for previous searches
     const cachedCityJSON = localStorage.getItem("pastCity");
@@ -29,9 +30,6 @@ function getWeather(city) {
             return response.json();
         })
         .then(function (weatherData) {
-            console.log(weatherData);
-            console.log("function");
-            console.log(weatherData);
             todayWeatherPrint(weatherData);
             fiveDayForecastPrint(weatherData);
         });
@@ -46,8 +44,11 @@ searchForm.addEventListener("submit", function (searchCity) {
     //else error signal
     if (city) {
         getWeather(city);
+        pastSearchChecker();
     } else {
         console.log("something unexpected so far?");
+        //make 404 or anything other than 200 message!
+
     }
 });
 
@@ -98,18 +99,26 @@ function todayWeatherPrint(weatherData) {
     todayWeather.appendChild(weather);
 
     //set data to localstorage
-    console.log(weatherData.cod);
+
     if (weatherData.cod == 200) {
         cachedCity.unshift(location.toUpperCase()); //put recent search into 1st spot
         if (cachedCity.length > 10) {
             // if prev search > 10, limit it to 10
-            //console.log(cachedCity);
+
             cachedCity.splice(10);
         }
         localStorage.setItem("pastCity", JSON.stringify(cachedCity));
         addPast(location);
     }
 }
+
+/*function pastSearchChecker() { v2.0 perhaps will compare current search vs existing and then do some sort of animation to move the past search up to the top.
+    const searchInput = document.getElementById('simple-search');
+    const citySearched = searchInput.value.trim();
+    if (!citySearched) return;
+
+}*/
+
 
 function addPast(location) {
     const pastCity = location.toUpperCase();
@@ -143,7 +152,7 @@ function addPast(location) {
 
     if (pastCityButton) {
         pastCityButton.classList =
-            "ml-2 w-full text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800";
+            "ml-2 w-full text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900";
     }
 }
 
@@ -159,7 +168,7 @@ function fiveDayForecastPrint(weatherData) {
         const futureTemp = futureData.main.temp; //last temperature of the future day
         const futureWind = futureData.wind.speed;
         const futureHumidity = futureData.main.humidity;
-        console.log(dayOfWeek + ": " + futureTemp);
+
 
         fiveDayForecast.innerHTML += `
         <div class="future_day bg-gray-400 p-3">
