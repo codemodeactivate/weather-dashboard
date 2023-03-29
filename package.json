@@ -4,7 +4,7 @@
   "description": "Case Western Coding Bootcamp Module 06 Challenge",
   "main": "index.js",
   "scripts": {
-    "build-css": "tailwindcss build src/styles.css -o public/styles.css",
+    "build-css": "npx tailwindcss-cli -i src/styles.css -o public/styles.css",
     "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
     "start": "node assets/js/script.js"
   },

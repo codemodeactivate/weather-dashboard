@@ -171,7 +171,7 @@ function fiveDayForecastPrint(weatherData) {
 
 
         fiveDayForecast.innerHTML += `
-        <div class="future_day bg-gray-400 p-3">
+        <div class="future_day bg-purple-300 p-3 sm:mx-4 rounded">
           <p class="text-center">${dayOfWeek}</p>
           <img src="${futureIconURL}" />
           <p>Temp: ${futureTemp}°F</p>
