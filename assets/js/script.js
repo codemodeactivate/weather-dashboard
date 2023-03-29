@@ -72,9 +72,7 @@ return newDate;
 function todayWeatherPrint(weatherData) {
 
     const todayIcon = weatherData.list[0].weather[0].icon;
-    console.log(todayIcon);
     const weather = document.createElement('div');
-    //weather.classList.add('weather');
     const currentDate = convertDate(weatherData, 0);
     const wind = weatherData.list[0].wind.speed;
     const temp = weatherData.list[0].main.temp;
@@ -102,7 +100,14 @@ function todayWeatherPrint(weatherData) {
     //set data to localstorage
     console.log(weatherData.cod);
     if (weatherData.cod == 200) {
-        cachedCity.push(location.toUpperCase());
+
+
+
+        cachedCity.unshift(location.toUpperCase()); //put recent search into 1st spot
+        if (cachedCity.length > 10) { // if prev search > 10, limit it to 10
+            //console.log(cachedCity);
+            cachedCity.splice(10);
+        }
         localStorage.setItem("pastCity", JSON.stringify(cachedCity));
         addPast(location);
     }
@@ -118,7 +123,15 @@ function addPast(location) {
     pastCityButton.addEventListener('click', function() {
         const cachedCityJSON = localStorage.getItem(pastCity);
         if (cachedCityJSON) {
+
             const weatherData = JSON.parse(cachedCityJSON);
+            //console.log(Object.keys(weatherData).length);
+            //console.log(typeof(weatherData));
+            if (weatherData.length > 10) {
+                weatherData.splice(10);
+            }
+
+
             todayWeatherPrint(weatherData);
             fiveDayForecastPrint(weatherData);
         } else {
@@ -126,13 +139,29 @@ function addPast(location) {
         }
     });
 
+    if (pastCityList.childNodes.length === 10) {
+        pastCityList.removeChild(pastCityList.lastChild);
+    }
+
     pastCityEle.appendChild(pastCityButton);
+    pastCityList.insertBefore(pastCityEle, pastCityList.firstChild);
+
 
     if (pastCityButton) {
         pastCityButton.classList = 'ml-2 w-full text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
+        //cachedCity.unshift(location.toUpperCase());
+        //console.log(cachedCity);
+
+
+
     }
-    pastCityList.appendChild(pastCityEle);
+    //pastCityList.appendChild(pastCityEle);
 }
+
+
+
+
+
 
 
 function fiveDayForecastPrint(weatherData) {
