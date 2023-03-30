@@ -41,6 +41,8 @@ function getWeather(city) {
         .then(function (weatherData) {
             todayWeatherPrint(weatherData);
             fiveDayForecastPrint(weatherData);
+            fiveDay.classList.remove('hidden');
+            fiveDayForecast.classList.remove('hidden');
         })
         .catch (function(error) {
             console.error('Error fetching weather data:', error);
